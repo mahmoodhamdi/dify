@@ -1669,7 +1669,7 @@ class DocumentSegmentSummary(Base):
     status: Mapped[str] = mapped_column(
         EnumText(SummaryStatus, length=32), nullable=False, server_default=sa.text("'generating'")
     )
-    error: Mapped[str] = mapped_column(LongText, nullable=True)
+    error: Mapped[str | None] = mapped_column(LongText, nullable=True)
     enabled: Mapped[bool] = mapped_column(sa.Boolean, nullable=False, server_default=sa.text("true"))
     disabled_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     disabled_by = mapped_column(StringUUID, nullable=True)
